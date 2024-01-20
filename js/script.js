@@ -7,7 +7,7 @@ let REPO_COUNT=0;
 let CURR_PAGE=1;
 let PAGE_START=1;
 let PAGE_END=2;
-let NAME = "No User"
+let NAME = "No User";
 $('#previous_btn').click(function(){
     PAGE_NO = PAGE_NO-1;
     updatePageUsingBtn();
@@ -48,7 +48,6 @@ function fetchFullData(){
 }
 function updatePageUsingBtn(){
     $(".active")[0].classList.remove("active");  
-    const pageList = $(".page");
     updatePagination();
     checkDisable();
     fetchRepo();
@@ -88,7 +87,10 @@ async function fetchUserInfo() {
         $('.loading_header')[0].classList.add("hidden");
         $('#profile').attr("src", "./image/default_profile.jpg");
         REPO_COUNT=0;
-        $('#github__link').remove();
+        $('#github__link__text').text(`https://github.com/#`)
+        $('#github__link').attr('href', '/');
+        $('#github__link').removeAttr('target');
+        // $('#github__link').remove();
         return;
     }
     if(data.name){
@@ -124,6 +126,7 @@ async function fetchUserInfo() {
         location.append(span);
         $('.information')[0].append(location);
     }
+
     $('#profile').attr("src", data.avatar_url);
     $('#github__link__text').text(`https://github.com/${data.login}`)
     $('#github__link').attr('href', `https://github.com/${data.login}`);
@@ -157,6 +160,7 @@ async function fetchUserInfo() {
 
 function updatePagination(){
     PAGE_COUNT = Math.ceil(REPO_COUNT/REPO_PER_PAGE);
+    console.log("check pagination",REPO_COUNT,PAGE_COUNT)
     if(PAGE_COUNT==0){
         $('.pagination')[0].classList.add('hidden');
         return;
@@ -165,7 +169,7 @@ function updatePagination(){
         $('.pagination')[0].classList.remove('hidden');
     }
     
-    PAGE_END = Math.min(PAGE_COUNT,9);
+    // PAGE_END = Math.min(PAGE_COUNT,9);
 
     const page_numbers = $('.page__numbers');
     page_numbers.empty();
@@ -178,6 +182,15 @@ function updatePagination(){
     else if(PAGE_NO-PAGE_START<4){
         PAGE_START = Math.max(1,PAGE_NO-4);
         PAGE_END = Math.min(PAGE_COUNT,PAGE_START+8);
+    }
+    // if(PAGE_NO-PAGE_START==4){
+
+    
+    if(PAGE_START!=1){
+        let singlePage = document.createElement("div");
+        singlePage.classList.add('page');
+        singlePage.textContent = '...';
+        page_numbers.append(singlePage);
     }
 
     // inserting page numbers in the pagination
@@ -194,13 +207,20 @@ function updatePagination(){
             $(".active")[0].classList.remove("active");
             singlePage.classList.add("active");
             checkDisable();
-            updatePagination();
             fetchRepo();
+            // updatePagination();
             // updateRepo();
             
         });
+        
         page_numbers.append(singlePage);
         checkDisable();
+    }
+    if(PAGE_END!=PAGE_COUNT){
+        let singlePage = document.createElement("div");
+        singlePage.classList.add('page');
+        singlePage.textContent = '...';
+        page_numbers.append(singlePage);
     }
 }
 
