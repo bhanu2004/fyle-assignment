@@ -31,7 +31,6 @@ $('#last_page').click(function(){
 $('#repo_per_page').change(function(){
     REPO_PER_PAGE = $(this).val();
     PAGE_NO=1;
-    console.log("repoPerPage");
     updatePagination();
     fetchRepo();
     // updateRepo();
@@ -50,7 +49,6 @@ function fetchFullData(){
 function updatePageUsingBtn(){
     $(".active")[0].classList.remove("active");  
     const pageList = $(".page");
-    console.log("updatePageUsingBtn",pageList);
     updatePagination();
     checkDisable();
     fetchRepo();
@@ -62,11 +60,9 @@ function checkDisable(){
         $('#next_btn').attr("disabled", "disabled");
     }
     if(PAGE_NO!=1){
-        console.log("fsjdaf")
         $('#previous_btn').removeAttr("disabled");
     }
     if(PAGE_NO==1){
-        console.log("fsjdaf")
         $('#previous_btn').attr("disabled", "disabled");
     }
     if(PAGE_NO!=PAGE_COUNT){
@@ -81,16 +77,7 @@ async function fetchUserInfo() {
     let response = await fetch(`https://api.github.com/users/${NAME}`);
     let data = await response.json();
     $('.information').empty();
-    console.log(data);
-    // if(data.message=='Not Found'){
-    //     $('#name').text("Invalid User");
-    //     $('.header')[0].classList.remove("hidden");
-    //     $('.loading_header')[0].classList.add("hidden");
-    //     return;
-    // }
-
-    // if(data.name) $('#name').text(data.name);
-    // else $('#name').text('user');
+ 
 
     let name = document.createElement("h2");
     name.id = "name";
@@ -169,15 +156,12 @@ async function fetchUserInfo() {
 }
 
 function updatePagination(){
-    console.log("cheking", PAGE_COUNT,REPO_COUNT,REPO_PER_PAGE);
     PAGE_COUNT = Math.ceil(REPO_COUNT/REPO_PER_PAGE);
     if(PAGE_COUNT==0){
-        console.log("chekding", PAGE_COUNT);
         $('.pagination')[0].classList.add('hidden');
         return;
     }
     else{
-        console.log(PAGE_COUNT, REPO_PER_PAGE)
         $('.pagination')[0].classList.remove('hidden');
     }
     
@@ -230,14 +214,12 @@ async function fetchRepo(){
     if(repoData.message=='Not Found'){
         $('.load_repository_container')[0].classList.add("hidden");
         PAGE_COUNT=0;
-        console.log("check",PAGE_COUNT);
         updatePagination();
         return;
     }
     let repoDiv = $('.repository__container');
     
     
-    console.log(repoData.length);
     repoData.map((item)=>{
         var singleRepo = document.createElement("div");
         singleRepo.classList.add('repository');
@@ -273,7 +255,6 @@ async function fetchRepo(){
         repoDiv.append(singleRepo);
     })
     $('.load_repository_container')[0].classList.add("hidden");
-    console.log("last line");
     updatePagination();
 }
 
