@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/e8dcaa89d1.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header__container">
+            <div class="header__wrapper">
+                <div class="header">
+                    <div class="profile__image">
+                        <img src="./image/default_profile.jpg" id="profile" alt="pic">
+                    </div>
+                    <div class="information">
+                        <h2 id="name">User name</h2>
+                    </div>
+                </div>
+                <div class="loading_header hidden">
+                    <div class="loading_profile__image animated-background">
+                    </div>
+                    <div class="loading_information ">
+                        <div class="loading_name animated-background"></div>
+                        <div class="loading_desc animated-background"></div>
+                        <div class="loading_social__accounts animated-background">
+        
+                        </div>
+                    </div>
+                </div>
+                <a href="./link" id="github__link" class="github__link"><img class="icon" src="./image/link.png" alt="link"> <span id="github__link__text"></span></a>
+            </div>
+            <div class="set__user">
+                <input id="user_input" type="text" placeholder="Enter username">
+                <button id="search_btn">Search</button>
+            </div>
+        </div>
+        <div class="feature__section">
+            
+            <!-- <div>
+                <span></span>
+                <input type="text">
+                <button>Set</button>
+            </div> -->
+        </div>
+        <div class="repository__container">
+            
+        </div>
+        <div class="load_repository_container hidden">
+            <div class="loding__repository">
+                <div class="repository">
+                    <div class="loading__title animated-background"></div>
+                    <div class="loading__desc animated-background"></div>
+                    <div class="topic__list">
+                        <span class="loading__topic"></span>
+                        <span class="loading__topic"></span>
+                        <span class="loading__topic"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="loding__repository">
+                <div class="repository">
+                    <div class="loading__title animated-background"></div>
+                    <div class="loading__desc animated-background"></div>
+                    <div class="topic__list">
+                        <span class="loading__topic"></span>
+                        <span class="loading__topic"></span>
+                        <span class="loading__topic"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="loding__repository">
+                <div class="repository">
+                    <div class="loading__title animated-background"></div>
+                    <div class="loading__desc animated-background"></div>
+                    <div class="topic__list">
+                        <span class="loading__topic"></span>
+                        <span class="loading__topic"></span>
+                        <span class="loading__topic"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="loding__repository">
+                <div class="repository">
+                    <div class="loading__title animated-background"></div>
+                    <div class="loading__desc animated-background"></div>
+                    <div class="topic__list">
+                        <span class="loading__topic"></span>
+                        <span class="loading__topic"></span>
+                        <span class="loading__topic"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="loding__repository">
+                <div class="repository">
+                    <div class="loading__title animated-background"></div>
+                    <div class="loading__desc animated-background"></div>
+                    <div class="topic__list">
+                        <span class="loading__topic"></span>
+                        <span class="loading__topic"></span>
+                        <span class="loading__topic"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="loding__repository">
+                <div class="repository">
+                    <div class="loading__title animated-background"></div>
+                    <div class="loading__desc animated-background"></div>
+                    <div class="topic__list">
+                        <span class="loading__topic"></span>
+                        <span class="loading__topic"></span>
+                        <span class="loading__topic"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="pagination hidden">
+            <div class="pages__wrapper">
+                <div class="pages">
+                    <div id="first_page" class="left-border page">	&lt&lt</div>
+                    <div id="page__numbers" class="page__numbers">
+                    </div>
+                    
+                    <div id="last_page" class="page">	&gt&gt</div>
+                </div>
+                <div class="side__buttons">
+                    <button id="previous_btn" class="left">previous</button>
+                    <div  class="item__count">
+                        <span>Repo per page: </span>
+                        <select name="" id="repo_per_page">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                            <option value="80">80</option>
+                            <option value="100">100</option>
+                        </select>
+                    </div>
+                    <button id="next_btn" class="right">next</button>
+                </div>
+            </div>
+        </div>
+        
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
